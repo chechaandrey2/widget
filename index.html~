@@ -8,7 +8,6 @@
             // sync
             // Backbone.sync
             // router
-            // определять путь
             Backbone.history.start({root: "/public/search/"})
         </script>
     </head>
