@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <script type="text/javascript" src="lib/json2.js"></script>
+        <script type="text/javascript" src="lib/jquery.js"></script>
+        <script type="text/javascript" src="lib/underscore.js"></script>
+        <script type="text/javascript" src="lib/backbone.js"></script>
+        <script type="text/javascript" src="lib/jquery.require.js"></script>
+        <script type="text/javascript" src="lib/jquery.ui.min.js"></script>
+        <script type="text/javascript">
+            $.ready(function() {
+                $('#autocomplete').autocomplete({source: [
+                    {lang: "c++", prog: 'c'}, {lang: "java", prog: 'c'}, 
+                    {lang: "php", prog: 'c'}, {lang: "coldfusion", prog: 'c'}, {lang: "javascript", prog: 'c'}, 
+                    {lang: "asp", prog: 'c'}, {lang: "ruby", prog: 'c'}
+                ]});
+                
+                $('#autocomplete').autocomplete({source: ["c++", "java", "php", "coldfusion", "javascript", "asp", "ruby"]});
+            });
+        </script>
+    </head>
+    <body>
+        <input type="text" id="autocomplete" />
+    </body>
+</html>

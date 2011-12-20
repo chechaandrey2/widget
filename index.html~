@@ -5,12 +5,13 @@
         <script type="text/javascript" src="lib/underscore.js"></script>
         <script type="text/javascript" src="lib/backbone.js"></script>
         <script type="text/javascript" src="lib/jquery.require.js"></script>
+        <script type="text/javascript" src="lib/"></script>
         <script type="text/javascript">
             window.PrivatWidget = {};
             window.PrivatWidget.TEMPLATE = {};
             
             // sync
-            // Backbone.sync
+            Backbone.sync
             
             $(document).ready(function() {
                 // --PATHS--
@@ -19,12 +20,15 @@
                 window.JS = [];
                 
                 // -globalmenu-
-                TPL.push("app/globalmenu/template.globalmenu.tpl");
-                JS.push("app/globalmenu/model.globalmenuitem.js");
-                JS.push("app/globalmenu/collection.globalmenu.js");
+                window.TPL.push("app/globalmenu/template.globalmenu.tpl");
+                window.JS.push("app/globalmenu/model.globalmenuitem.js");
+                window.JS.push("app/globalmenu/collection.globalmenu.js");
                 window.JS.push('app/globalmenu/view.globalmenu.js');
                 
                 // -iteminvoice-
+                window.TPL.push("app/iteminvoice/template.iteminvoice.tpl");
+                window.TPL.push('app/iteminvoice/template.iteminvoice_new_ps.tpl');
+                window.JS.push("app/iteminvoice/model.iteminvoice.js");
                 window.JS.push('app/iteminvoice/view.iteminvoice.js');
                 
                 // --ROUTER--
@@ -70,5 +74,6 @@
     </head>
     <body>
         <div id="privatwidget_globalmenu"></div>
+        <div id="privatwidget_iteminvoice"></div>
     </body>
 </html>

@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script type="text/javascript" src="lib/json2.js"></script>
+        <script type="text/javascript" src="lib/jquery.js"></script>
+        <script type="text/javascript" src="lib/underscore.js"></script>
+        <script type="text/javascript" src="lib/backbone.js"></script>
+        <script type="text/javascript" src="lib/jquery.require.js"></script>
+        <script type="text/javascript">
+            $.ajax({
+                type:'POST',
+                url:'https://shamatrin.test.liqpay.com/?do=invoices&act=ajax',
+                data: {subname:'hello', data: 'hello world'},
+                error: function() {
+                    console.log('ajax error');
+                },
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+        </script>
+    <head>
+    <body></body>
+</html>

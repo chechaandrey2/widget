@@ -2,7 +2,6 @@ window.PrivatWidget.ROUTER = Backbone.Router.extend({
     initialize: function() {
         this.route(/^(iteminvoice\/).*$/i, 'iteminvoice', this.iteminvoice);// general page
         this.route(/^(iteminvoice\/([a-z0-9]+)\/).*$/i, 'iteminvoice', this.iteminvoice);
-        this.route(/^(iteminvoice\/([a-z0-9]+)\/([a-z0-9]+)\/).*$/i, 'iteminvoice', this.iteminvoice);
         this.route(/^(invoice\/).*$/i, 'invoice', this.invoice);
         this.route(/^(invoice\/([a-z0-9]+)\/).*$/i, 'invoice', this.invoice);
         this.route(/^(clients\/).*$/i, 'clients', this.clients);
@@ -35,10 +34,17 @@ window.PrivatWidget.ROUTER = Backbone.Router.extend({
         this.renderGlobalMenu();
         
     },
-    iteminvoice: function(query, mod, tab) {
-        console.log('QUERY: %o; MOD: %o; TAB: %o', query, mod, tab);
+    iteminvoice: function(query, id) {
+        console.log('QUERY: %o; MOD: %o; TAB: %o', query, id);
         
         this.renderGlobalMenu();
+        
+        if(!this.isObject(this._views['iteminvoice'])) {
+		    this._views['iteminvoice'] = new window.PrivatWidget.VIEWITEMINVOICE({
+		        model: new window.PrivatWidget.COLLECTIONGLOBALMENU(), router: this
+		    });
+		    this._views['iteminvoice'].render();
+		}
         
     },
     renderGlobalMenu: function() {
