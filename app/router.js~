@@ -16,21 +16,37 @@ window.PrivatWidget.ROUTER = Backbone.Router.extend({
     isObject: function(arg) {
         return (arg && typeof arg == 'object');
     },
-    _views: {}// {name: View}
+    _views: {},// {name: View}
     invoice: function(query, group) {
         console.log('QUERY1: %o; GROUP1: %o', query, group);
+        
+        this.renderGlobalMenu();
         
     },
     clients: function(query, group) {
         console.log('QUERY2: %o; GROUP2: %o', query, group);
         
+        this.renderGlobalMenu();
+        
     },
     ps: function(query, group) {
         console.log('QUERY2: %o; GROUP2: %o', query, group);
+        
+        this.renderGlobalMenu();
         
     },
     iteminvoice: function(query, mod, tab) {
         console.log('QUERY: %o; MOD: %o; TAB: %o', query, mod, tab);
         
+        this.renderGlobalMenu();
+        
+    },
+    renderGlobalMenu: function() {
+        if(!this.isObject(this._views['globalmenu'])) {
+		    this._views['globalmenu'] = new window.PrivatWidget.VIEWGLOBALMENU({
+		        collection: new window.PrivatWidget.COLLECTIONGLOBALMENU(), router: this
+		    });
+		    this._views['globalmenu'].render();
+		}
     }
 });

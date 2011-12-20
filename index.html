@@ -19,6 +19,9 @@
                 window.JS = [];
                 
                 // -globalmenu-
+                window.TPL.push("app/globalmenu/template.globalmenu.tpl");
+                window.JS.push("app/globalmenu/model.globalmenuitem.js");
+                window.JS.push("app/globalmenu/collection.globalmenu.js");
                 window.JS.push('app/globalmenu/view.globalmenu.js');
                 
                 // -iteminvoice-
@@ -65,5 +68,7 @@
             // Backbone.history.start({root: "/public/search/"})
         </script>
     </head>
-    <body></body>
+    <body>
+        <div id="privatwidget_globalmenu"></div>
+    </body>
 </html>

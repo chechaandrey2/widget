@@ -19,6 +19,9 @@
                 window.JS = [];
                 
                 // -globalmenu-
+                TPL.push("app/globalmenu/template.globalmenu.tpl");
+                JS.push("app/globalmenu/model.globalmenuitem.js");
+                JS.push("app/globalmenu/collection.globalmenu.js");
                 window.JS.push('app/globalmenu/view.globalmenu.js');
                 
                 // -iteminvoice-
@@ -51,10 +54,7 @@
                                 
                                 window.PrivatWidget.Router = new window.PrivatWidget.ROUTER();
                                 
-                                Backbone.history.start({
-                                	pushState: true, 
-                                	root: '/support/'
-                                });
+                                Backbone.history.start();
                                 
                             }
                         });
@@ -68,5 +68,7 @@
             // Backbone.history.start({root: "/public/search/"})
         </script>
     </head>
-    <body></body>
+    <body>
+        <div id="privatwidget_globalmenu"></div>
+    </body>
 </html>
