@@ -1,15 +1,68 @@
 <html>
     <head>
-        <script type="text/javascript" src="./lib/jquery.js"></script>
-        <script type="text/javascript" src="./lib/underscore.js"></script>
-        <script type="text/javascript" src="./lib/backbone.js"></script>
+        <script type="text/javascript" src="lib/json2.js"></script>
+        <script type="text/javascript" src="lib/jquery.js"></script>
+        <script type="text/javascript" src="lib/underscore.js"></script>
+        <script type="text/javascript" src="lib/backbone.js"></script>
+        <script type="text/javascript" src="lib/jquery.require.js"></script>
         <script type="text/javascript">
             window.PrivatWidget = {};
+            window.PrivatWidget.TEMPLATE = {};
+            
             // sync
             // Backbone.sync
+            
+            $(document).ready(function() {
+                // --PATHS--
+                window.CSS = [];
+                window.TPL = [];
+                window.JS = [];
+                
+                // -globalmenu-
+                window.JS.push('app/globalmenu/view.globalmenu.js');
+                
+                // -iteminvoice-
+                window.JS.push('app/iteminvoice/view.iteminvoice.js');
+                
+                // --ROUTER--
+                JS.push("app/router.js");
+                // --PATHS--
+                
+                $.includeCSS({
+                    urls: window.CSS,
+                    callback: function(url) {
+                        console.log(url);
+                    }
+                });
+                
+                $.require({
+                    urls: window.TPL,
+                    callback: function(data, url) {
+                        window.PrivatWidget.TEMPLATE[url] = data;
+                        console.log(url);
+                    },
+                    end: function() {
+                        
+                        $.include({
+                            urls: window.JS,
+                            async: false,
+                            callback: function(url) { console.log(url); },
+                            end: function() {
+                                
+                                window.PrivatWidget.Router = new window.PrivatWidget.ROUTER();
+                                
+                                Backbone.history.start();
+                                
+                            }
+                        });
+                        
+                    }
+                });
+                
+            });
             // router
             // определять путь
-            Backbone.history.start({root: "/public/search/"})
+            // Backbone.history.start({root: "/public/search/"})
         </script>
     </head>
     <body></body>
