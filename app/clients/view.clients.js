@@ -14,6 +14,7 @@ window.PrivatWidget.VIEWCLIENTS = Backbone.View.extend({
         if(group === undefined) {
             console.log('main group');
             this.el.html(this.statsTemplate['clients']({groups: []}));
+            
         } else {
             
         }

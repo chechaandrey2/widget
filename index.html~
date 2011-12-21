@@ -12,6 +12,7 @@
             window.PrivatWidget.APIURL = 'https://shamatrin.test.liqpay.com/?do=invoices&act=ajax';
             
             // sync
+            /*
             Backbone.sync = function(method, model, success, error) {
                 $.ajax({
                     method: 'POST',
@@ -22,9 +23,10 @@
                         alert('AJAX ERROR');
                         error(jXHR, textStatus, errorThrown);
                     },
-                    data: {subname: }
+                    data: {subname: model.url, data: }
                 });
             }
+            */
             
             $(document).ready(function() {
                 // --PATHS--

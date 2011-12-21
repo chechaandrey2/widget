@@ -23,7 +23,7 @@
                         alert('AJAX ERROR');
                         error(jXHR, textStatus, errorThrown);
                     },
-                    data: {subname: }
+                    data: {subname: model.url, data: JSON.stringify(model.toJSON())}
                 });
             }
             */
