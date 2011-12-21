@@ -2,10 +2,10 @@ window.PrivatWidget.COLLECTIONGLOBALMENU = Backbone.Collection.extend({
     model: window.PrivatWidget.MODELGLOBALMENU,
     initialize: function() {
         this.add([
-            {name: 'products/services', hash: 'ps/all/'},
-            {name: 'clients', hash: 'clients/all/'},
-            {name: 'invoices', hash: 'invoices/all/'},
-            {name: 'new invoice', hash: 'iteminvoice/new/1/'}
+            {name: 'products/services', hash: 'ps/'},
+            {name: 'clients', hash: 'clients/'},
+            {name: 'invoices', hash: 'invoice/'},
+            {name: 'new invoice', hash: 'iteminvoice/'}
         ]);
     }
 });

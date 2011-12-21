@@ -5,13 +5,26 @@
         <script type="text/javascript" src="lib/underscore.js"></script>
         <script type="text/javascript" src="lib/backbone.js"></script>
         <script type="text/javascript" src="lib/jquery.require.js"></script>
-        <script type="text/javascript" src="lib/"></script>
+        <script type="text/javascript" src="lib/jquery.ui.min.js"></script>
         <script type="text/javascript">
             window.PrivatWidget = {};
             window.PrivatWidget.TEMPLATE = {};
+            window.PrivatWidget.APIURL = 'https://shamatrin.test.liqpay.com/?do=invoices&act=ajax';
             
             // sync
-            Backbone.sync
+            Backbone.sync = function(method, model, success, error) {
+                $.ajax({
+                    method: 'POST',
+                    url: window.PrivatWidget.APIURL,
+                    success: success,
+                    error: function(jXHR, textStatus, errorThrown) {
+                        console.log('AJAX ERROR: %o, %o, %o', jXHR, textStatus, errorThrown);
+                        alert('AJAX ERROR');
+                        error(jXHR, textStatus, errorThrown);
+                    },
+                    data: {subname: }
+                });
+            }
             
             $(document).ready(function() {
                 // --PATHS--
@@ -30,6 +43,11 @@
                 window.TPL.push('app/iteminvoice/template.iteminvoice_new_ps.tpl');
                 window.JS.push("app/iteminvoice/model.iteminvoice.js");
                 window.JS.push('app/iteminvoice/view.iteminvoice.js');
+                
+                // -clients-
+                window.TPL.push("app/clients/template.clients.tpl");
+                window.TPL.push('app/clients/template.clients_add_group.tpl');
+                window.JS.push('app/clients/view.clients.js');
                 
                 // --ROUTER--
                 JS.push("app/router.js");
@@ -75,5 +93,6 @@
     <body>
         <div id="privatwidget_globalmenu"></div>
         <div id="privatwidget_iteminvoice"></div>
+        <div id="privatwidget_clients"></div>
     </body>
 </html>

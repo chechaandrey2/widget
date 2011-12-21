@@ -21,11 +21,24 @@ window.PrivatWidget.ROUTER = Backbone.Router.extend({
         
         this.renderGlobalMenu();
         
+        $('#privatwidget_iteminvoice').hide();
+        $('#privatwidget_clients').hide();
+        
     },
     clients: function(query, group) {
         console.log('QUERY2: %o; GROUP2: %o', query, group);
         
         this.renderGlobalMenu();
+        
+        $('#privatwidget_iteminvoice').hide();
+        $('#privatwidget_clients').hide();
+        
+        if(!this.isObject(this._views['clients'])) {
+		    this._views['clients'] = new window.PrivatWidget.VIEWCLIENTS({router: this});
+		    this._views['clients'].render();
+		}
+		
+		$('#privatwidget_clients').show();
         
     },
     ps: function(query, group) {
@@ -33,11 +46,17 @@ window.PrivatWidget.ROUTER = Backbone.Router.extend({
         
         this.renderGlobalMenu();
         
+        $('#privatwidget_iteminvoice').hide();
+        $('#privatwidget_clients').hide();
+        
     },
     iteminvoice: function(query, id) {
-        console.log('QUERY: %o; MOD: %o; TAB: %o', query, id);
+        console.log('QUERY: %o; ID: %o', query, id);
         
         this.renderGlobalMenu();
+        
+        $('#privatwidget_iteminvoice').hide();
+        $('#privatwidget_clients').hide();
         
         if(!this.isObject(this._views['iteminvoice'])) {
 		    this._views['iteminvoice'] = new window.PrivatWidget.VIEWITEMINVOICE({
@@ -45,6 +64,8 @@ window.PrivatWidget.ROUTER = Backbone.Router.extend({
 		    });
 		    this._views['iteminvoice'].render();
 		}
+		
+		$('#privatwidget_iteminvoice').show();
         
     },
     renderGlobalMenu: function() {

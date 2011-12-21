@@ -6,11 +6,13 @@ window.PrivatWidget.VIEWGLOBALMENU = Backbone.View.extend({
     },
     el: $('#privatwidget_globalmenu'),
     statsTemplate: {
-        'globalmenu': _.template(TEMPLATE['app/globalmenu/template.globalmenu.tpl'])
+        'globalmenu': _.template(window.PrivatWidget.TEMPLATE['app/globalmenu/template.globalmenu.tpl'])
     },
     render: function() {
         
         this.el.html(this.statsTemplate['globalmenu'](this.collection));
+        
+        console.log(this.collection);
         
         return this;
         
